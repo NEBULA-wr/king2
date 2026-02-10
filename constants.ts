@@ -4,11 +4,41 @@ export const APP_TITLE = "Politécnico Hermana Rosario Torres";
 export const PLAN_TITLE = "Plan Maestro de Evacuación y Seguridad";
 export const MAP_LOCATION_URL = "https://www.google.com/maps/place/Super+Col.+Kikay/@18.4917365,-69.8849197,3a,75y,87.86h,58.85t/data=!3m7!1e1!3m5!1sd6fN8MpZG8k9zk1pi_YF_g!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D31.152840127948217%26panoid%3Dd6fN8MpZG8k9zk1pi_YF_g%26yaw%3D87.85755303163717!7i13312!8i6656!4m6!3m5!1s0x8eaf8842b405a02d:0x92b003a7b3eeba00!8m2!3d18.4919918!4d-69.8846905!16s%2Fg%2F11j1306qsl?entry=ttu";
 
-// --- CONFIGURACIÓN DE IMÁGENES LOCALES ---
-// Coloca tus imágenes en la carpeta 'public' del proyecto.
+// --- GESTIÓN DE ASSETS (Imágenes) ---
+// Usamos new URL(..., import.meta.url).href para asegurar que Vite incluya
+// las imágenes en el build de producción (GitHub Pages / Netlify).
+// NOTA: Asegúrate de que las imágenes estén en la misma carpeta que este archivo.
+
+const imgPlan = new URL('./imagen.png', import.meta.url).href;
+
+// Definición de variables para cada imagen según tu lista
+const img1 = new URL('./1.jpeg', import.meta.url).href;
+const img2 = new URL('./2.jpeg', import.meta.url).href;
+const img3 = new URL('./3.jpeg', import.meta.url).href;
+const img4 = new URL('./4.jpeg', import.meta.url).href;
+const img5 = new URL('./5.jpeg', import.meta.url).href;
+const img6 = new URL('./6.jpeg', import.meta.url).href;
+const img7 = new URL('./7.jpeg', import.meta.url).href;
+const img8 = new URL('./8.jpeg', import.meta.url).href;
+const img11 = new URL('./11.jpeg', import.meta.url).href;
+const img12 = new URL('./12.jpeg', import.meta.url).href;
+const img13 = new URL('./13.jpeg', import.meta.url).href;
+const img14 = new URL('./14.jpeg', import.meta.url).href;
+const img15 = new URL('./15.jpeg', import.meta.url).href;
+const img16 = new URL('./16.jpeg', import.meta.url).href;
+const img17 = new URL('./17.jpeg', import.meta.url).href;
+const img18 = new URL('./18.jpeg', import.meta.url).href;
+const img19 = new URL('./19.jpeg', import.meta.url).href;
+const img20 = new URL('./20.jpeg', import.meta.url).href;
+const img21 = new URL('./21.jpeg', import.meta.url).href;
+const img22 = new URL('./22.jpeg', import.meta.url).href;
+const img23 = new URL('./23.jpeg', import.meta.url).href;
+const img24 = new URL('./24.jpeg', import.meta.url).href;
+const img25 = new URL('./25.jpeg', import.meta.url).href;
+const img26 = new URL('./26.jpeg', import.meta.url).href;
+
 export const IMAGES = {
-  // El plano casi perfecto que mencionaste
-  architecturalPlan: "/imagen.png", 
+  architecturalPlan: imgPlan, 
 };
 
 export const EVACUATION_ROUTE: RouteStep[] = [
@@ -21,30 +51,27 @@ export const EVACUATION_ROUTE: RouteStep[] = [
         type: 'AULAS',
         title: "Cursos y Aulas de la Primera Planta",
         images: [
-           // Cambia 'foto1.jpg' por el nombre real de tu archivo en la carpeta public
-           // Cambia el 'label' por el texto que quieres que salga debajo de la imagen
-           { url: "/1.jpeg", label: "Curso 1" },
-           { url: "/2.jpeg", label: "Curso 2" },
-           { url: "/3.jpeg", label: "Curso 3" },
-           { url: "/4.jpeg", label: "Curso 4" },
-           { url: "/5.jpeg", label: "Curso 5" }
-
+           { url: img1, label: "Curso 1" },
+           { url: img2, label: "Curso 2" },
+           { url: img3, label: "Curso 3" },
+           { url: img4, label: "Curso 4" },
+           { url: img5, label: "Curso 5" }
         ]
       },
       {
         type: 'PASILLOS',
         title: "Pasillo Central A",
         images: [
-           { url: "/6.jpeg", label: "Pasillo Principal hacia el Patio" },
-           { url: "/7.jpeg", label: "Pasillo Principal hacia el Patio" },
-           { url: "/8.jpeg", label: "Pasillo Principal hacia el Patio" }
+           { url: img6, label: "Pasillo Principal hacia el Patio" },
+           { url: img7, label: "Pasillo Principal hacia el Patio" },
+           { url: img8, label: "Pasillo Principal hacia el Patio" }
         ]
       },
       {
         type: 'EXTERIOR',
         title: "Salida al Exterior",
         images: [
-           { url: "26.jpeg", label: "Puerta de Acceso al Patio Central" }
+           { url: img26, label: "Puerta de Acceso al Patio Central" }
         ]
       }
     ]
@@ -58,22 +85,22 @@ export const EVACUATION_ROUTE: RouteStep[] = [
         type: 'AULAS',
         title: "Aulas de Soporte",
         images: [
-          { url: "/16.jpeg", label: "Edificio B" },
-          { url: "/17.jpeg", label: "Aulas planta de abajo" }
+          { url: img16, label: "Edificio B" },
+          { url: img17, label: "Aulas planta de abajo" }
         ]
       },
       {
         type: 'PASILLOS',
         title: "Pasillo Frontal",
         images: [
-          { url: "21.jpeg", label: "Ruta hacia Explanada Frontal" }
+          { url: img21, label: "Ruta hacia Explanada Frontal" }
         ]
       },
       {
         type: 'EXTERIOR',
         title: "Punto de Reunión B",
         images: [
-          { url: "/26.jpeg", label: "Zona de Seguridad Frontal" }
+          { url: img26, label: "Zona de Seguridad Frontal" }
         ]
       }
     ]
@@ -83,22 +110,21 @@ export const EVACUATION_ROUTE: RouteStep[] = [
     title: "FASE 3: EDIFICIO A (Desarrollo) - 2DA PLANTA",
     description: "Salida de Aulas Superiores. Uso estricto de escalera principal Edif A.",
     sections: [
-  
       {
         type: 'PASILLOS',
         title: "Pasillo Superior A",
         images: [
-          { url: "/11.jpeg", label: "Fila India (Mano Derecha en Pared)" },
-          { url: "/12.jpeg", label: "Fila India (Mano Derecha en Pared)" },
-          { url: "/13.jpeg", label: "Fila India (Mano Derecha en Pared)" }
+          { url: img11, label: "Fila India (Mano Derecha en Pared)" },
+          { url: img12, label: "Fila India (Mano Derecha en Pared)" },
+          { url: img13, label: "Fila India (Mano Derecha en Pared)" }
         ]
       },
       {
         type: 'ESCALERAS',
         title: "Escalera Edificio A",
         images: [
-          { url: "/14.jpeg", label: "Bajada por Escalera Principal" },
-          { url: "/15.jpeg", label: "Llegada a Planta Baja" }
+          { url: img14, label: "Bajada por Escalera Principal" },
+          { url: img15, label: "Llegada a Planta Baja" }
         ]
       }
     ]
@@ -112,16 +138,16 @@ export const EVACUATION_ROUTE: RouteStep[] = [
         type: 'AULAS',
         title: "Aulas Superiores B",
         images: [
-          { url: "/18.jpeg", label: "Aulas de Edificio B" },
-          { url: "/19.jpeg", label: "Aulas de Edificio B" }
+          { url: img18, label: "Aulas de Edificio B" },
+          { url: img19, label: "Aulas de Edificio B" }
         ]
       },
       {
         type: 'ESCALERAS',
         title: "Escalera Edificio B",
         images: [
-          { url: "/20.jpeg", label: "Uso de Escaleras Frontales" },
-          { url: "/21.jpeg", label: "Evacuación hacia Explanada" }
+          { url: img20, label: "Uso de Escaleras Frontales" },
+          { url: img21, label: "Evacuación hacia Explanada" }
         ]
       }
     ]
@@ -135,18 +161,16 @@ export const EVACUATION_ROUTE: RouteStep[] = [
         type: 'AULAS',
         title: "Pabellón 3",
         images: [
-          { url: "/22.jpeg", label: "Aula de la Planta Trasera " },
-
+          { url: img22, label: "Aula de la Planta Trasera" },
         ]
       },
       {
         type: 'PASILLOS',
         title: "Conexión Externa",
         images: [
-          { url: "/23.jpeg", label: "Ruta hacia Punto de Encuentro Trasero" },
-          { url: "/24.jpeg", label: "Ruta hacia Punto de Encuentro Trasero" },
-          { url: "/25.jpeg", label: "Ruta hacia Punto de Encuentro Trasero" }
-
+          { url: img23, label: "Ruta hacia Punto de Encuentro Trasero" },
+          { url: img24, label: "Ruta hacia Punto de Encuentro Trasero" },
+          { url: img25, label: "Ruta hacia Punto de Encuentro Trasero" }
         ]
       }
     ]
@@ -160,8 +184,7 @@ export const EVACUATION_ROUTE: RouteStep[] = [
         type: 'PUNTO_REUNION',
         title: "Zona de Filas",
         images: [
-          { url: "/26.jpeg", label: "Formación en Patio Central" },
-          
+          { url: img26, label: "Formación en Patio Central" },
         ]
       }
     ]
