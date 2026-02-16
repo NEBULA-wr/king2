@@ -120,9 +120,9 @@ export const generatePDFReport = async () => {
   doc.line(0, pageHeight * 0.45, pageWidth, pageHeight * 0.55);
 
   let coverY = 60;
-  const centerX = pageWidth / 2;
-
+  
   // Título Superior (Sobre fondo oscuro, texto blanco/claro)
+  // Este texto cae en el triángulo superior izquierdo (verde oscuro)
   doc.setTextColor(255, 255, 255);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(26);
@@ -135,14 +135,10 @@ export const generatePDFReport = async () => {
 
   coverY += 25;
   
-  // Subtítulos
-  doc.setFontSize(16);
-  doc.setTextColor(255, 255, 255);
-  doc.text("SEGURIDAD E HIGIENE", margin, coverY);
-  doc.text("INDUSTRIAL", margin, coverY + 8);
+ 
 
-  // Bloque Central (Título del Proyecto) - Posicionado en el espacio negativo o cruzando
-  coverY = (pageHeight / 2) - 10;
+  // Bloque Central (Título del Proyecto) - Posicionado en el espacio negativo (BLANCO)
+  coverY = (pageHeight / 2) - 15; 
   
   doc.setTextColor(COLORS.TEXT_DARK[0], COLORS.TEXT_DARK[1], COLORS.TEXT_DARK[2]);
   doc.setFont("helvetica", "bold");
@@ -150,33 +146,33 @@ export const generatePDFReport = async () => {
   const mainTitleLines = doc.splitTextToSize("SEGURIDAD Y SALUD EN EL TRABAJO", contentWidth - 40);
   doc.text(mainTitleLines, pageWidth - margin, coverY, { align: "right" });
 
-  coverY += (mainTitleLines.length * 12) + 15;
-
-  doc.setFontSize(16);
-  doc.setTextColor(100, 100, 100);
-  doc.setFont("helvetica", "bold");
-  doc.text("POLITÉCNICO ROSARIO TORRES", pageWidth - margin, coverY, { align: "right" });
-
-  // Pie de Portada (Sobre fondo verde claro inferior)
-  const bottomY = pageHeight - 50;
-
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(12);
+  // Nombre del Liceo - Lo colocamos justo debajo del título principal
+  // Importante: Usamos texto COLOR PRIMARIO (Verde) sobre el fondo BLANCO para asegurar visibilidad
+  const polyY = coverY + (mainTitleLines.length * 12) + 10;
   
-  // Columna Izquierda (Abajo)
+  doc.setFontSize(16);
+  doc.setTextColor(COLORS.PRIMARY[0], COLORS.PRIMARY[1], COLORS.PRIMARY[2]); 
+  doc.setFont("helvetica", "bold");
+  doc.text("POLITÉCNICO ROSARIO TORRES", pageWidth - margin, polyY, { align: "right" });
+
+  // Pie de Portada
+  const bottomY = pageHeight - 40;
+
+  // Columna Izquierda (Fondo Blanco) -> Texto Oscuro
+  doc.setTextColor(COLORS.TEXT_DARK[0], COLORS.TEXT_DARK[1], COLORS.TEXT_DARK[2]);
+  doc.setFontSize(12);
   doc.setFont("helvetica", "bold");
   doc.text("ESPECIALIDAD ACADÉMICA:", margin, bottomY);
   doc.setFont("helvetica", "normal");
   doc.text("Desarrollo de Aplicaciones", margin, bottomY + 6);
   
-  // Columna Derecha (Abajo)
+  // Columna Derecha (Fondo Verde) -> Texto Blanco
+  // Esta parte cae en el triángulo inferior derecho (verde claro)
+  doc.setTextColor(255, 255, 255);
   doc.setFont("helvetica", "bold");
   doc.text("5TO AÑO - A", pageWidth - margin, bottomY, { align: "right" });
   doc.setFont("helvetica", "normal");
   doc.text("Santo Domingo, D.N.", pageWidth - margin, bottomY + 6, { align: "right" });
-
-  // NOTA: Se eliminó el número de página de la portada como solicitado.
-
 
   // ====================================================================
   // 2. PRESENTACIÓN (HOJA 2) - EXACTAMENTE IGUAL AL PDF
@@ -235,11 +231,7 @@ export const generatePDFReport = async () => {
   doc.text("Nombres y Apellidos:", tableLeft, presY);
   doc.text("Matrícula:", tableRight, presY, { align: "right" });
   
-  presY += 2;
-  doc.setLineWidth(0.5);
-  doc.setDrawColor(0,0,0);
-  doc.line(tableLeft, presY, tableRight, presY);
-  presY += 8;
+  presY += 10; // Espaciado añadido tras eliminar la línea
 
   const students = [
       { name: "Briant Alexis", id: "3053" },
@@ -566,4 +558,4 @@ export const generatePDFReport = async () => {
   }
 
   doc.save("Plan_Evacuacion_PHRT_Oficial.pdf");
-};  
+};
